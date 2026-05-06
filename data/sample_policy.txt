@@ -1,0 +1,38 @@
+Privacy Policy — Super Calculator v2.3
+
+Last Updated: January 1, 2025
+
+1. INFORMATION WE COLLECT
+
+1.1 Device Information
+We collect your device's Android ID (a random, resettable identifier) to distinguish
+your device for analytics purposes. This identifier cannot be used to identify you
+personally and is reset when you factory-reset your device.
+
+We do NOT collect your IMEI, IMSI, phone number, or any other persistent hardware
+identifier.
+
+1.2 Usage Analytics
+We collect anonymised usage statistics, including which calculator features you use
+most frequently, to improve the application. All analytics data is anonymised before
+transmission and does not include any personally identifiable information.
+
+1.3 Location Data
+We do NOT collect, access, or process location data of any kind.
+
+2. HOW WE USE YOUR INFORMATION
+
+2.1 We use anonymised device identifiers solely to:
+   - Count unique installations for internal analytics.
+   - Detect and prevent abuse of the free tier.
+
+2.2 We do not sell, rent, or share any collected data with third parties.
+
+3. DATA RETENTION
+Analytics data is retained for no longer than 90 days and is then permanently deleted.
+
+4. YOUR RIGHTS
+You may opt out of analytics collection at any time in Settings > Privacy.
+
+5. CONTACT
+privacy@supercalculator.example.com

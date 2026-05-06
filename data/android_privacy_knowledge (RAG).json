@@ -1,0 +1,1680 @@
+{
+  "metadata": {
+    "title": "Android Privacy API Knowledge Base",
+    "description": "Knowledge base of Android APIs relevant to privacy compliance and security",
+    "version": "1.0",
+    "generated_date": "2025-07-30",
+    "api_count": 47
+  },
+  "apis": [
+    {
+      "type": "class",
+      "package": "android.location",
+      "name": "LocationManager",
+      "full_name": "android.location.LocationManager",
+      "description": "Provides access to the system location services, allowing applications to obtain periodic updates of the device's geographical location.",
+      "url": "https://developer.android.com/reference/android/location/LocationManager",
+      "since_version": "1",
+      "required_permissions": [
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "location"
+        ],
+        "sensitivity": "high",
+        "description": "This API accesses the device's physical location data."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "requestLocationUpdates",
+          "signature": "void requestLocationUpdates(String provider, long minTime, float minDistance, LocationListener listener)",
+          "return_type": "void",
+          "description": "Register for location updates using a named provider and listener.",
+          "parameters": {
+            "provider": "Name of the provider with which to register",
+            "minTime": "Minimum time interval between location updates in milliseconds",
+            "minDistance": "Minimum distance between location updates in meters",
+            "listener": "LocationListener to register for location updates"
+          },
+          "since_version": "1",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.ACCESS_FINE_LOCATION",
+            "android.permission.ACCESS_COARSE_LOCATION"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "location"
+            ],
+            "sensitivity": "high",
+            "description": "Continuously tracks device location and sends updates to the application."
+          }
+        },
+        {
+          "type": "method",
+          "name": "getLastKnownLocation",
+          "signature": "Location getLastKnownLocation(String provider)",
+          "return_type": "Location",
+          "description": "Returns the last known location for a provider.",
+          "parameters": {
+            "provider": "Name of the provider"
+          },
+          "since_version": "1",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.ACCESS_FINE_LOCATION",
+            "android.permission.ACCESS_COARSE_LOCATION"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "location"
+            ],
+            "sensitivity": "high",
+            "description": "Retrieves the device's last known physical location."
+          }
+        }
+      ],
+      "constants": []
+    },
+    {
+      "type": "class",
+      "package": "com.google.android.gms.location",
+      "name": "FusedLocationProviderClient",
+      "full_name": "com.google.android.gms.location.FusedLocationProviderClient",
+      "description": "Main entry point for interacting with the fused location provider, a location API that combines signals from GPS, Wi-Fi, cell networks, and device sensors.",
+      "url": "https://developers.google.com/android/reference/com/google/android/gms/location/FusedLocationProviderClient",
+      "since_version": "11",
+      "required_permissions": [
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "location"
+        ],
+        "sensitivity": "high",
+        "description": "This API accesses the device's physical location using multiple data sources."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "getLastLocation",
+          "signature": "Task<Location> getLastLocation()",
+          "return_type": "Task<Location>",
+          "description": "Gets the best most recent location currently available.",
+          "parameters": {},
+          "since_version": "11",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.ACCESS_FINE_LOCATION",
+            "android.permission.ACCESS_COARSE_LOCATION"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "location"
+            ],
+            "sensitivity": "high",
+            "description": "Retrieves the device's most recent physical location."
+          }
+        },
+        {
+          "type": "method",
+          "name": "requestLocationUpdates",
+          "signature": "Task<Void> requestLocationUpdates(LocationRequest request, LocationCallback callback, Looper looper)",
+          "return_type": "Task<Void>",
+          "description": "Requests location updates with a callback on the specified Looper thread.",
+          "parameters": {
+            "request": "Parameters for location request",
+            "callback": "Callback for location updates",
+            "looper": "Looper for callback execution"
+          },
+          "since_version": "11",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.ACCESS_FINE_LOCATION",
+            "android.permission.ACCESS_COARSE_LOCATION"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "location"
+            ],
+            "sensitivity": "high",
+            "description": "Continuously tracks device location and sends updates to the application."
+          }
+        }
+      ],
+      "constants": []
+    },
+    {
+      "type": "class",
+      "package": "com.google.android.gms.location",
+      "name": "GeofencingClient",
+      "full_name": "com.google.android.gms.location.GeofencingClient",
+      "description": "Main entry point for interacting with the geofencing APIs.",
+      "url": "https://developers.google.com/android/reference/com/google/android/gms/location/GeofencingClient",
+      "since_version": "11",
+      "required_permissions": [
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_BACKGROUND_LOCATION"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "location"
+        ],
+        "sensitivity": "high",
+        "description": "Monitors device location to detect when it enters or exits specified geographical areas."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "addGeofences",
+          "signature": "Task<Void> addGeofences(GeofencingRequest request, PendingIntent pendingIntent)",
+          "return_type": "Task<Void>",
+          "description": "Adds geofences to be monitored by the system.",
+          "parameters": {
+            "request": "The request object containing the geofences to add",
+            "pendingIntent": "The pending intent to launch when a geofence transition occurs"
+          },
+          "since_version": "11",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.ACCESS_FINE_LOCATION",
+            "android.permission.ACCESS_BACKGROUND_LOCATION"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "location"
+            ],
+            "sensitivity": "high",
+            "description": "Monitors location in the background to detect when a device enters or exits defined geographic areas."
+          }
+        }
+      ],
+      "constants": []
+    },
+    {
+      "type": "class",
+      "package": "android.hardware.camera",
+      "name": "Camera",
+      "full_name": "android.hardware.Camera",
+      "description": "Legacy API for camera access. Controls the camera and captures pictures and videos.",
+      "url": "https://developer.android.com/reference/android/hardware/Camera",
+      "since_version": "1",
+      "required_permissions": [
+        "android.permission.CAMERA"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "camera"
+        ],
+        "sensitivity": "high",
+        "description": "This API accesses the device's camera hardware, capable of capturing photos and videos."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "open",
+          "signature": "static Camera open()",
+          "return_type": "Camera",
+          "description": "Creates a new Camera object to access the first back-facing camera on the device.",
+          "parameters": {},
+          "since_version": "1",
+          "deprecated": true,
+          "required_permissions": [
+            "android.permission.CAMERA"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "camera"
+            ],
+            "sensitivity": "high",
+            "description": "Opens and initializes the camera hardware for capturing images or video."
+          }
+        },
+        {
+          "type": "method",
+          "name": "takePicture",
+          "signature": "void takePicture(ShutterCallback shutter, PictureCallback raw, PictureCallback jpeg)",
+          "return_type": "void",
+          "description": "Triggers an asynchronous image capture.",
+          "parameters": {
+            "shutter": "Callback for shutter event",
+            "raw": "Callback for raw image data",
+            "jpeg": "Callback for compressed image"
+          },
+          "since_version": "1",
+          "deprecated": true,
+          "required_permissions": [
+            "android.permission.CAMERA"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "camera"
+            ],
+            "sensitivity": "high",
+            "description": "Captures images using the device camera, potentially including people, sensitive documents, or surroundings."
+          }
+        }
+      ],
+      "constants": []
+    },
+    {
+      "type": "class",
+      "package": "android.hardware.camera2",
+      "name": "CameraManager",
+      "full_name": "android.hardware.camera2.CameraManager",
+      "description": "Modern API for discovering and opening camera devices.",
+      "url": "https://developer.android.com/reference/android/hardware/camera2/CameraManager",
+      "since_version": "21",
+      "required_permissions": [
+        "android.permission.CAMERA"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "camera"
+        ],
+        "sensitivity": "high",
+        "description": "This API provides access to camera hardware which can capture photos and videos of users and their surroundings."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "openCamera",
+          "signature": "void openCamera(String cameraId, CameraDevice.StateCallback callback, Handler handler)",
+          "return_type": "void",
+          "description": "Opens a connection to a camera with the given ID.",
+          "parameters": {
+            "cameraId": "The unique identifier for the camera device",
+            "callback": "Callback for receiving camera states",
+            "handler": "Handler for callback dispatch"
+          },
+          "since_version": "21",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.CAMERA"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "camera"
+            ],
+            "sensitivity": "high",
+            "description": "Opens and initializes the camera hardware for capturing images or video of users and their surroundings."
+          }
+        },
+        {
+          "type": "method",
+          "name": "getCameraIdList",
+          "signature": "String[] getCameraIdList()",
+          "return_type": "String[]",
+          "description": "Returns the list of currently connected camera devices by ID.",
+          "parameters": {},
+          "since_version": "21",
+          "deprecated": false,
+          "required_permissions": [],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "device_info"
+            ],
+            "sensitivity": "low",
+            "description": "Returns information about available cameras but doesn't access the cameras themselves."
+          }
+        }
+      ],
+      "constants": []
+    },
+    {
+      "type": "class",
+      "package": "androidx.camera.core",
+      "name": "CameraSelector",
+      "full_name": "androidx.camera.core.CameraSelector",
+      "description": "Used to select a camera for use cases in the CameraX Jetpack library.",
+      "url": "https://developer.android.com/reference/androidx/camera/core/CameraSelector",
+      "since_version": "21",
+      "required_permissions": [
+        "android.permission.CAMERA"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "camera"
+        ],
+        "sensitivity": "high",
+        "description": "Facilitates camera selection and initialization, enabling access to camera hardware."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "bindToLifecycle",
+          "signature": "Camera bindToLifecycle(LifecycleOwner lifecycleOwner, UseCase... useCases)",
+          "return_type": "Camera",
+          "description": "Binds use cases to a lifecycle owner with this selector.",
+          "parameters": {
+            "lifecycleOwner": "The lifecycle owner for the use cases",
+            "useCases": "The use cases to bind"
+          },
+          "since_version": "21",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.CAMERA"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "camera"
+            ],
+            "sensitivity": "high",
+            "description": "Enables camera access and processing for capturing images, video, or analyzing camera preview data."
+          }
+        }
+      ],
+      "constants": [
+        {
+          "type": "constant",
+          "name": "DEFAULT_FRONT_CAMERA",
+          "data_type": "CameraSelector",
+          "value": "CameraSelector.DEFAULT_FRONT_CAMERA",
+          "description": "Default camera selector for the front camera.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "21"
+        },
+        {
+          "type": "constant",
+          "name": "DEFAULT_BACK_CAMERA",
+          "data_type": "CameraSelector",
+          "value": "CameraSelector.DEFAULT_BACK_CAMERA",
+          "description": "Default camera selector for the back camera.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "21"
+        }
+      ]
+    },
+    {
+      "type": "class",
+      "package": "android.media",
+      "name": "MediaRecorder",
+      "full_name": "android.media.MediaRecorder",
+      "description": "Records audio and video. Used for capturing audio from microphone.",
+      "url": "https://developer.android.com/reference/android/media/MediaRecorder",
+      "since_version": "1",
+      "required_permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "microphone"
+        ],
+        "sensitivity": "high",
+        "description": "This API accesses the device's microphone to record audio, potentially capturing private conversations."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "setAudioSource",
+          "signature": "void setAudioSource(int audio_source)",
+          "return_type": "void",
+          "description": "Sets the audio source to be used for recording.",
+          "parameters": {
+            "audio_source": "The audio source to use"
+          },
+          "since_version": "1",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.RECORD_AUDIO"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "microphone"
+            ],
+            "sensitivity": "high",
+            "description": "Configures the microphone or other audio source for recording audio."
+          }
+        },
+        {
+          "type": "method",
+          "name": "start",
+          "signature": "void start()",
+          "return_type": "void",
+          "description": "Begins capturing and encoding data to the file specified with setOutputFile().",
+          "parameters": {},
+          "since_version": "1",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.RECORD_AUDIO"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "microphone"
+            ],
+            "sensitivity": "high",
+            "description": "Activates the microphone and begins recording audio, potentially capturing private conversations."
+          }
+        }
+      ],
+      "constants": [
+        {
+          "type": "constant",
+          "name": "AudioSource.MIC",
+          "data_type": "int",
+          "value": "1",
+          "description": "Microphone audio source.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "1"
+        },
+        {
+          "type": "constant",
+          "name": "AudioSource.VOICE_COMMUNICATION",
+          "data_type": "int",
+          "value": "7",
+          "description": "Voice communication (e.g., VoIP) audio source.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "11"
+        }
+      ]
+    },
+    {
+      "type": "class",
+      "package": "android.media",
+      "name": "AudioRecord",
+      "full_name": "android.media.AudioRecord",
+      "description": "Manages audio resources for applications that record audio data from the audio input hardware.",
+      "url": "https://developer.android.com/reference/android/media/AudioRecord",
+      "since_version": "3",
+      "required_permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "microphone"
+        ],
+        "sensitivity": "high",
+        "description": "This API provides low-level access to capture audio data from the microphone."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "startRecording",
+          "signature": "void startRecording()",
+          "return_type": "void",
+          "description": "Starts recording from the audio hardware.",
+          "parameters": {},
+          "since_version": "3",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.RECORD_AUDIO"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "microphone"
+            ],
+            "sensitivity": "high",
+            "description": "Activates the microphone and begins capturing raw audio data."
+          }
+        },
+        {
+          "type": "method",
+          "name": "read",
+          "signature": "int read(byte[] audioData, int offsetInBytes, int sizeInBytes)",
+          "return_type": "int",
+          "description": "Reads audio data from the audio hardware for recording.",
+          "parameters": {
+            "audioData": "The array to which the recorded audio data is written",
+            "offsetInBytes": "The offset in audioData where data is written",
+            "sizeInBytes": "The number of requested bytes"
+          },
+          "since_version": "3",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.RECORD_AUDIO"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "microphone"
+            ],
+            "sensitivity": "high",
+            "description": "Reads raw audio data from the microphone, potentially capturing private conversations."
+          }
+        }
+      ],
+      "constants": []
+    },
+    {
+      "type": "class",
+      "package": "android.provider",
+      "name": "ContactsContract",
+      "full_name": "android.provider.ContactsContract",
+      "description": "The contract between the contacts provider and applications. Contains definitions for the supported URIs and columns.",
+      "url": "https://developer.android.com/reference/android/provider/ContactsContract",
+      "since_version": "5",
+      "required_permissions": [
+        "android.permission.READ_CONTACTS",
+        "android.permission.WRITE_CONTACTS"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "contacts"
+        ],
+        "sensitivity": "high",
+        "description": "This API allows access to the user's contact information, including names, phone numbers, email addresses, and other personal data."
+      },
+      "methods": [],
+      "constants": [
+        {
+          "type": "constant",
+          "name": "AUTHORITY",
+          "data_type": "String",
+          "value": "com.android.contacts",
+          "description": "The authority for the contacts provider.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "5"
+        }
+      ]
+    },
+    {
+      "type": "class",
+      "package": "android.provider",
+      "name": "ContactsContract.CommonDataKinds.Phone",
+      "full_name": "android.provider.ContactsContract.CommonDataKinds.Phone",
+      "description": "Contains definitions for accessing phone number data in ContactsContract.Data table.",
+      "url": "https://developer.android.com/reference/android/provider/ContactsContract.CommonDataKinds.Phone",
+      "since_version": "5",
+      "required_permissions": [
+        "android.permission.READ_CONTACTS"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "contacts",
+          "phone_numbers"
+        ],
+        "sensitivity": "high",
+        "description": "This API provides access to contact phone numbers stored on the device."
+      },
+      "methods": [],
+      "constants": [
+        {
+          "type": "constant",
+          "name": "CONTENT_URI",
+          "data_type": "Uri",
+          "value": "content://com.android.contacts/data/phones",
+          "description": "The content URI for phone number data.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "5"
+        },
+        {
+          "type": "constant",
+          "name": "NUMBER",
+          "data_type": "String",
+          "value": "data1",
+          "description": "The phone number as the user entered it.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "5"
+        }
+      ]
+    },
+    {
+      "type": "class",
+      "package": "android.provider",
+      "name": "ContactsContract.CommonDataKinds.Email",
+      "full_name": "android.provider.ContactsContract.CommonDataKinds.Email",
+      "description": "Contains definitions for accessing email address data in ContactsContract.Data table.",
+      "url": "https://developer.android.com/reference/android/provider/ContactsContract.CommonDataKinds.Email",
+      "since_version": "5",
+      "required_permissions": [
+        "android.permission.READ_CONTACTS"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "contacts",
+          "email_addresses"
+        ],
+        "sensitivity": "high",
+        "description": "This API provides access to contact email addresses stored on the device."
+      },
+      "methods": [],
+      "constants": [
+        {
+          "type": "constant",
+          "name": "CONTENT_URI",
+          "data_type": "Uri",
+          "value": "content://com.android.contacts/data/emails",
+          "description": "The content URI for email data.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "5"
+        },
+        {
+          "type": "constant",
+          "name": "ADDRESS",
+          "data_type": "String",
+          "value": "data1",
+          "description": "The email address.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "5"
+        }
+      ]
+    },
+    {
+      "type": "class",
+      "package": "android.provider",
+      "name": "CalendarContract",
+      "full_name": "android.provider.CalendarContract",
+      "description": "The contract between the calendar provider and applications. Contains definitions for the supported URIs and columns.",
+      "url": "https://developer.android.com/reference/android/provider/CalendarContract",
+      "since_version": "14",
+      "required_permissions": [
+        "android.permission.READ_CALENDAR",
+        "android.permission.WRITE_CALENDAR"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "calendar"
+        ],
+        "sensitivity": "high",
+        "description": "This API allows access to the user's calendar data, including events, attendees, and reminders."
+      },
+      "methods": [],
+      "constants": [
+        {
+          "type": "constant",
+          "name": "AUTHORITY",
+          "data_type": "String",
+          "value": "com.android.calendar",
+          "description": "The authority for the calendar provider.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "14"
+        }
+      ]
+    },
+    {
+      "type": "class",
+      "package": "android.provider",
+      "name": "CalendarContract.Events",
+      "full_name": "android.provider.CalendarContract.Events",
+      "description": "Contains definitions for accessing calendar events.",
+      "url": "https://developer.android.com/reference/android/provider/CalendarContract.Events",
+      "since_version": "14",
+      "required_permissions": [
+        "android.permission.READ_CALENDAR",
+        "android.permission.WRITE_CALENDAR"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "calendar",
+          "events"
+        ],
+        "sensitivity": "high",
+        "description": "This API provides access to calendar events, including titles, locations, and attendees."
+      },
+      "methods": [],
+      "constants": [
+        {
+          "type": "constant",
+          "name": "CONTENT_URI",
+          "data_type": "Uri",
+          "value": "content://com.android.calendar/events",
+          "description": "The content URI for events.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "14"
+        },
+        {
+          "type": "constant",
+          "name": "TITLE",
+          "data_type": "String",
+          "value": "title",
+          "description": "The title of the event.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "14"
+        },
+        {
+          "type": "constant",
+          "name": "EVENT_LOCATION",
+          "data_type": "String",
+          "value": "eventLocation",
+          "description": "The location of the event.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "14"
+        }
+      ]
+    },
+    {
+      "type": "class",
+      "package": "android.telephony",
+      "name": "TelephonyManager",
+      "full_name": "android.telephony.TelephonyManager",
+      "description": "Provides access to information about the telephony services on the device.",
+      "url": "https://developer.android.com/reference/android/telephony/TelephonyManager",
+      "since_version": "1",
+      "required_permissions": [
+        "android.permission.READ_PHONE_STATE",
+        "android.permission.READ_PHONE_NUMBERS"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "phone",
+          "identity"
+        ],
+        "sensitivity": "high",
+        "description": "This API accesses sensitive phone information including identifiers and phone numbers."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "getDeviceId",
+          "signature": "String getDeviceId()",
+          "return_type": "String",
+          "description": "Returns the unique device ID, for example, the IMEI for GSM and the MEID or ESN for CDMA phones.",
+          "parameters": {},
+          "since_version": "1",
+          "deprecated": true,
+          "required_permissions": [
+            "android.permission.READ_PHONE_STATE"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "identity"
+            ],
+            "sensitivity": "high",
+            "description": "Accesses the device's IMEI or other hardware identifier, which is a persistent, unique device identifier."
+          }
+        },
+        {
+          "type": "method",
+          "name": "getImei",
+          "signature": "String getImei()",
+          "return_type": "String",
+          "description": "Returns the IMEI (International Mobile Equipment Identity).",
+          "parameters": {},
+          "since_version": "26",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.READ_PHONE_STATE"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "identity"
+            ],
+            "sensitivity": "high",
+            "description": "Accesses the device's IMEI, which is a persistent, unique device identifier."
+          }
+        },
+        {
+          "type": "method",
+          "name": "getLine1Number",
+          "signature": "String getLine1Number()",
+          "return_type": "String",
+          "description": "Returns the phone number string for line 1, for example, the MSISDN for a GSM phone.",
+          "parameters": {},
+          "since_version": "1",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.READ_PHONE_NUMBERS"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "phone",
+              "phone_number"
+            ],
+            "sensitivity": "high",
+            "description": "Accesses the user's phone number, a sensitive piece of personal information."
+          }
+        }
+      ],
+      "constants": []
+    },
+    {
+      "type": "class",
+      "package": "android.provider",
+      "name": "CallLog",
+      "full_name": "android.provider.CallLog",
+      "description": "The contract between the call log provider and applications. Contains definitions for the supported URIs and columns.",
+      "url": "https://developer.android.com/reference/android/provider/CallLog",
+      "since_version": "1",
+      "required_permissions": [
+        "android.permission.READ_CALL_LOG"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "call_logs"
+        ],
+        "sensitivity": "high",
+        "description": "This API accesses the user's call history, including numbers, dates, durations, and types of calls."
+      },
+      "methods": [],
+      "constants": []
+    },
+    {
+      "type": "class",
+      "package": "android.provider",
+      "name": "CallLog.Calls",
+      "full_name": "android.provider.CallLog.Calls",
+      "description": "Contains the call log table, which describes all phone calls stored on the device.",
+      "url": "https://developer.android.com/reference/android/provider/CallLog.Calls",
+      "since_version": "1",
+      "required_permissions": [
+        "android.permission.READ_CALL_LOG"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "call_logs"
+        ],
+        "sensitivity": "high",
+        "description": "This API provides direct access to call log entries including phone numbers called, call durations, and timestamps."
+      },
+      "methods": [],
+      "constants": [
+        {
+          "type": "constant",
+          "name": "CONTENT_URI",
+          "data_type": "Uri",
+          "value": "content://call_log/calls",
+          "description": "The content URI for the call log table.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "1"
+        },
+        {
+          "type": "constant",
+          "name": "NUMBER",
+          "data_type": "String",
+          "value": "number",
+          "description": "The phone number as the user entered it.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "1"
+        },
+        {
+          "type": "constant",
+          "name": "DATE",
+          "data_type": "String",
+          "value": "date",
+          "description": "The date the call occurred, in milliseconds since the epoch.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "1"
+        },
+        {
+          "type": "constant",
+          "name": "DURATION",
+          "data_type": "String",
+          "value": "duration",
+          "description": "The duration of the call in seconds.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "1"
+        }
+      ]
+    },
+    {
+      "type": "class",
+      "package": "android.provider",
+      "name": "Telephony",
+      "full_name": "android.provider.Telephony",
+      "description": "The contract between the telephony provider and applications. Contains definitions for accessing SMS and MMS data.",
+      "url": "https://developer.android.com/reference/android/provider/Telephony",
+      "since_version": "19",
+      "required_permissions": [
+        "android.permission.READ_SMS"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "sms",
+          "mms"
+        ],
+        "sensitivity": "high",
+        "description": "This API accesses the user's text messages, which can contain sensitive personal information."
+      },
+      "methods": [],
+      "constants": []
+    },
+    {
+      "type": "class",
+      "package": "android.provider",
+      "name": "Telephony.Sms",
+      "full_name": "android.provider.Telephony.Sms",
+      "description": "Contains definitions for accessing SMS messages.",
+      "url": "https://developer.android.com/reference/android/provider/Telephony.Sms",
+      "since_version": "19",
+      "required_permissions": [
+        "android.permission.READ_SMS"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "sms"
+        ],
+        "sensitivity": "high",
+        "description": "This API provides direct access to SMS messages, including sender, content, and timestamp."
+      },
+      "methods": [],
+      "constants": [
+        {
+          "type": "constant",
+          "name": "CONTENT_URI",
+          "data_type": "Uri",
+          "value": "content://sms",
+          "description": "The content URI for SMS messages.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "19"
+        },
+        {
+          "type": "constant",
+          "name": "INBOX_CONTENT_URI",
+          "data_type": "Uri",
+          "value": "content://sms/inbox",
+          "description": "The content URI for inbox SMS messages.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "19"
+        }
+      ]
+    },
+    {
+      "type": "class",
+      "package": "android.os",
+      "name": "Environment",
+      "full_name": "android.os.Environment",
+      "description": "Provides access to environment variables, including storage directories.",
+      "url": "https://developer.android.com/reference/android/os/Environment",
+      "since_version": "1",
+      "required_permissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "storage"
+        ],
+        "sensitivity": "high",
+        "description": "This API provides access to external storage directories where user files may be stored."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "getExternalStorageDirectory",
+          "signature": "File getExternalStorageDirectory()",
+          "return_type": "File",
+          "description": "Returns the primary external storage directory.",
+          "parameters": {},
+          "since_version": "1",
+          "deprecated": true,
+          "required_permissions": [
+            "android.permission.READ_EXTERNAL_STORAGE"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "storage"
+            ],
+            "sensitivity": "high",
+            "description": "Provides access to the external storage directory where user files may be stored."
+          }
+        },
+        {
+          "type": "method",
+          "name": "getExternalStoragePublicDirectory",
+          "signature": "File getExternalStoragePublicDirectory(String type)",
+          "return_type": "File",
+          "description": "Returns the directory for storing files of a particular type on the external storage.",
+          "parameters": {
+            "type": "The type of files directory to return"
+          },
+          "since_version": "8",
+          "deprecated": true,
+          "required_permissions": [
+            "android.permission.READ_EXTERNAL_STORAGE"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "storage"
+            ],
+            "sensitivity": "high",
+            "description": "Provides access to public directories on external storage where user media files are typically stored."
+          }
+        }
+      ],
+      "constants": [
+        {
+          "type": "constant",
+          "name": "DIRECTORY_PICTURES",
+          "data_type": "String",
+          "value": "Pictures",
+          "description": "Standard directory where pictures are stored.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "8"
+        },
+        {
+          "type": "constant",
+          "name": "DIRECTORY_DOCUMENTS",
+          "data_type": "String",
+          "value": "Documents",
+          "description": "Standard directory where documents are stored.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "19"
+        }
+      ]
+    },
+    {
+      "type": "class",
+      "package": "android.provider",
+      "name": "MediaStore",
+      "full_name": "android.provider.MediaStore",
+      "description": "The contract between the media provider and applications. Contains definitions for accessing media files.",
+      "url": "https://developer.android.com/reference/android/provider/MediaStore",
+      "since_version": "1",
+      "required_permissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.READ_MEDIA_VIDEO",
+        "android.permission.READ_MEDIA_AUDIO"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "storage",
+          "media"
+        ],
+        "sensitivity": "high",
+        "description": "This API provides access to media files stored on the device, including photos, videos, and audio."
+      },
+      "methods": [],
+      "constants": [
+        {
+          "type": "constant",
+          "name": "Images.Media.EXTERNAL_CONTENT_URI",
+          "data_type": "Uri",
+          "value": "content://media/external/images/media",
+          "description": "The content URI for external images media.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "1"
+        },
+        {
+          "type": "constant",
+          "name": "Video.Media.EXTERNAL_CONTENT_URI",
+          "data_type": "Uri",
+          "value": "content://media/external/video/media",
+          "description": "The content URI for external video media.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "1"
+        },
+        {
+          "type": "constant",
+          "name": "Audio.Media.EXTERNAL_CONTENT_URI",
+          "data_type": "Uri",
+          "value": "content://media/external/audio/media",
+          "description": "The content URI for external audio media.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "1"
+        }
+      ]
+    },
+    {
+      "type": "class",
+      "package": "android.provider",
+      "name": "Settings.Secure",
+      "full_name": "android.provider.Settings.Secure",
+      "description": "Contains secure system settings, such as the android id.",
+      "url": "https://developer.android.com/reference/android/provider/Settings.Secure",
+      "since_version": "1",
+      "required_permissions": [],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "settings",
+          "identity"
+        ],
+        "sensitivity": "high",
+        "description": "This API provides access to secure system settings, including the Android ID which is a persistent device identifier."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "getString",
+          "signature": "static String getString(ContentResolver resolver, String name)",
+          "return_type": "String",
+          "description": "Retrieve a secure system setting value by name.",
+          "parameters": {
+            "resolver": "ContentResolver to access settings",
+            "name": "Name of setting to retrieve"
+          },
+          "since_version": "1",
+          "deprecated": false,
+          "required_permissions": [],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "settings"
+            ],
+            "sensitivity": "medium",
+            "description": "Retrieves secure settings, which may include sensitive information if certain settings are queried."
+          }
+        }
+      ],
+      "constants": [
+        {
+          "type": "constant",
+          "name": "ANDROID_ID",
+          "data_type": "String",
+          "value": "android_id",
+          "description": "A 64-bit number (as a hex string) that is uniquely assigned to each device.",
+          "is_permission": false,
+          "protection_level": null,
+          "since_version": "3"
+        }
+      ]
+    },
+    {
+      "type": "class",
+      "package": "android.net.wifi",
+      "name": "WifiManager",
+      "full_name": "android.net.wifi.WifiManager",
+      "description": "Provides the primary API for managing all aspects of Wi-Fi connectivity.",
+      "url": "https://developer.android.com/reference/android/net/wifi/WifiManager",
+      "since_version": "1",
+      "required_permissions": [
+        "android.permission.ACCESS_WIFI_STATE"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "network",
+          "identity"
+        ],
+        "sensitivity": "high",
+        "description": "This API can access network information and previously provided MAC address of the WiFi device."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "getConnectionInfo",
+          "signature": "WifiInfo getConnectionInfo()",
+          "return_type": "WifiInfo",
+          "description": "Returns dynamic information about the current Wi-Fi connection, if any is active.",
+          "parameters": {},
+          "since_version": "1",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.ACCESS_WIFI_STATE"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "network"
+            ],
+            "sensitivity": "medium",
+            "description": "Provides information about the current WiFi connection, including network name and signal strength."
+          }
+        },
+        {
+          "type": "method",
+          "name": "getMacAddress",
+          "signature": "String getMacAddress()",
+          "return_type": "String",
+          "description": "Returns the MAC address of the Wi-Fi interface.",
+          "parameters": {},
+          "since_version": "1",
+          "deprecated": true,
+          "required_permissions": [
+            "android.permission.ACCESS_WIFI_STATE"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "identity"
+            ],
+            "sensitivity": "high",
+            "description": "Retrieves the MAC address, which is a persistent hardware identifier that could be used for tracking."
+          }
+        }
+      ],
+      "constants": []
+    },
+    {
+      "type": "class",
+      "package": "android.hardware.biometrics",
+      "name": "BiometricPrompt",
+      "full_name": "android.hardware.biometrics.BiometricPrompt",
+      "description": "A unified API for biometric authentication on Android.",
+      "url": "https://developer.android.com/reference/android/hardware/biometrics/BiometricPrompt",
+      "since_version": "28",
+      "required_permissions": [
+        "android.permission.USE_BIOMETRIC"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "biometric"
+        ],
+        "sensitivity": "high",
+        "description": "This API interacts with biometric sensors for user authentication. While it doesn't directly expose biometric data to apps, it handles sensitive biometric operations."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "authenticate",
+          "signature": "void authenticate(CancellationSignal cancel, Executor executor, AuthenticationCallback callback)",
+          "return_type": "void",
+          "description": "Requests authentication with a biometric sensor.",
+          "parameters": {
+            "cancel": "Signal to cancel the operation",
+            "executor": "Executor to run the callback",
+            "callback": "Callback to receive authentication results"
+          },
+          "since_version": "28",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.USE_BIOMETRIC"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "biometric"
+            ],
+            "sensitivity": "high",
+            "description": "Initiates biometric authentication, interfacing with biometric hardware but not exposing raw biometric data to the app."
+          }
+        }
+      ],
+      "constants": []
+    },
+    {
+      "type": "class",
+      "package": "android.net",
+      "name": "ConnectivityManager",
+      "full_name": "android.net.ConnectivityManager",
+      "description": "Class that answers queries about the state of network connectivity.",
+      "url": "https://developer.android.com/reference/android/net/ConnectivityManager",
+      "since_version": "1",
+      "required_permissions": [
+        "android.permission.ACCESS_NETWORK_STATE"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "network"
+        ],
+        "sensitivity": "medium",
+        "description": "This API provides information about the device's network connectivity state and capabilities."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "getActiveNetworkInfo",
+          "signature": "NetworkInfo getActiveNetworkInfo()",
+          "return_type": "NetworkInfo",
+          "description": "Gets information about the currently active default data network.",
+          "parameters": {},
+          "since_version": "1",
+          "deprecated": true,
+          "required_permissions": [
+            "android.permission.ACCESS_NETWORK_STATE"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "network"
+            ],
+            "sensitivity": "medium",
+            "description": "Provides details about the active network connection, which may reveal information about the user's connectivity."
+          }
+        },
+        {
+          "type": "method",
+          "name": "getNetworkCapabilities",
+          "signature": "NetworkCapabilities getNetworkCapabilities(Network network)",
+          "return_type": "NetworkCapabilities",
+          "description": "Returns the NetworkCapabilities of the given network.",
+          "parameters": {
+            "network": "The Network to get capabilities for"
+          },
+          "since_version": "21",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.ACCESS_NETWORK_STATE"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "network"
+            ],
+            "sensitivity": "medium",
+            "description": "Provides detailed information about network capabilities, including connection type and properties."
+          }
+        }
+      ],
+      "constants": []
+    },
+    {
+      "type": "class",
+      "package": "android.content.pm",
+      "name": "PackageManager",
+      "full_name": "android.content.pm.PackageManager",
+      "description": "Class for retrieving various package information.",
+      "url": "https://developer.android.com/reference/android/content/pm/PackageManager",
+      "since_version": "1",
+      "required_permissions": [],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "installed_apps"
+        ],
+        "sensitivity": "medium",
+        "description": "This API can retrieve information about installed applications, which may reveal user interests and behavior patterns."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "getInstalledPackages",
+          "signature": "List<PackageInfo> getInstalledPackages(int flags)",
+          "return_type": "List<PackageInfo>",
+          "description": "Returns a List of all packages that are installed on the device.",
+          "parameters": {
+            "flags": "Additional option flags"
+          },
+          "since_version": "1",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.QUERY_ALL_PACKAGES"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "installed_apps"
+            ],
+            "sensitivity": "medium",
+            "description": "Retrieves a list of all installed applications, which may reveal user interests and behavior patterns."
+          }
+        },
+        {
+          "type": "method",
+          "name": "getInstalledApplications",
+          "signature": "List<ApplicationInfo> getInstalledApplications(int flags)",
+          "return_type": "List<ApplicationInfo>",
+          "description": "Returns a List of all installed applications on the device.",
+          "parameters": {
+            "flags": "Additional option flags"
+          },
+          "since_version": "1",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.QUERY_ALL_PACKAGES"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "installed_apps"
+            ],
+            "sensitivity": "medium",
+            "description": "Retrieves information about all installed applications, which may reveal user interests and behavior patterns."
+          }
+        }
+      ],
+      "constants": []
+    },
+    {
+      "type": "class",
+      "package": "android.app.usage",
+      "name": "UsageStatsManager",
+      "full_name": "android.app.usage.UsageStatsManager",
+      "description": "Provides access to device usage history and statistics.",
+      "url": "https://developer.android.com/reference/android/app/usage/UsageStatsManager",
+      "since_version": "21",
+      "required_permissions": [
+        "android.permission.PACKAGE_USAGE_STATS"
+      ],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "app_usage"
+        ],
+        "sensitivity": "high",
+        "description": "This API provides detailed information about how the user interacts with apps, including usage duration and frequency."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "queryUsageStats",
+          "signature": "List<UsageStats> queryUsageStats(int intervalType, long beginTime, long endTime)",
+          "return_type": "List<UsageStats>",
+          "description": "Gets usage statistics for the given time range.",
+          "parameters": {
+            "intervalType": "The time interval by which the stats are aggregated",
+            "beginTime": "The inclusive beginning of the range of stats to include in the results",
+            "endTime": "The exclusive end of the range of stats to include in the results"
+          },
+          "since_version": "21",
+          "deprecated": false,
+          "required_permissions": [
+            "android.permission.PACKAGE_USAGE_STATS"
+          ],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "app_usage"
+            ],
+            "sensitivity": "high",
+            "description": "Retrieves detailed statistics about app usage, including which apps were used when and for how long, revealing user behavior patterns."
+          }
+        }
+      ],
+      "constants": []
+    },
+    {
+      "type": "class",
+      "package": "android.content",
+      "name": "ClipboardManager",
+      "full_name": "android.content.ClipboardManager",
+      "description": "Manages data on the system clipboard.",
+      "url": "https://developer.android.com/reference/android/content/ClipboardManager",
+      "since_version": "11",
+      "required_permissions": [],
+      "privacy_impact": {
+        "data_types_accessed": [
+          "clipboard"
+        ],
+        "sensitivity": "high",
+        "description": "This API can read and write data on the system clipboard, which may contain sensitive information copied by the user."
+      },
+      "methods": [
+        {
+          "type": "method",
+          "name": "getPrimaryClip",
+          "signature": "ClipData getPrimaryClip()",
+          "return_type": "ClipData",
+          "description": "Returns the current primary clip on the clipboard.",
+          "parameters": {},
+          "since_version": "11",
+          "deprecated": false,
+          "required_permissions": [],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "clipboard"
+            ],
+            "sensitivity": "high",
+            "description": "Reads the contents of the clipboard, which may contain passwords, personal data, or other sensitive information copied by the user."
+          }
+        },
+        {
+          "type": "method",
+          "name": "setPrimaryClip",
+          "signature": "void setPrimaryClip(ClipData clip)",
+          "return_type": "void",
+          "description": "Sets the current primary clip on the clipboard.",
+          "parameters": {
+            "clip": "The ClipData to set"
+          },
+          "since_version": "11",
+          "deprecated": false,
+          "required_permissions": [],
+          "privacy_impact": {
+            "data_types_accessed": [
+              "clipboard"
+            ],
+            "sensitivity": "high",
+            "description": "Writes data to the clipboard, potentially replacing existing content that may be needed by the user."
+          }
+        }
+      ],
+      "constants": []
+    },
+    {
+      "name": "ACCESS_FINE_LOCATION",
+      "full_name": "android.permission.ACCESS_FINE_LOCATION",
+      "description": "Allows an app to access precise location. This is a dangerous permission that grants access to the user's exact location.",
+      "protection_level": "dangerous",
+      "since_version": "1",
+      "type": "permission"
+    },
+    {
+      "name": "ACCESS_COARSE_LOCATION",
+      "full_name": "android.permission.ACCESS_COARSE_LOCATION",
+      "description": "Allows an app to access approximate location. This provides less precise location than ACCESS_FINE_LOCATION but still reveals the user's general area.",
+      "protection_level": "dangerous",
+      "since_version": "1",
+      "type": "permission"
+    },
+    {
+      "name": "ACCESS_BACKGROUND_LOCATION",
+      "full_name": "android.permission.ACCESS_BACKGROUND_LOCATION",
+      "description": "Allows an app to access location in the background. This is a dangerous permission that enables location tracking even when the app isn't actively being used.",
+      "protection_level": "dangerous",
+      "since_version": "29",
+      "type": "permission"
+    },
+    {
+      "name": "CAMERA",
+      "full_name": "android.permission.CAMERA",
+      "description": "Required to be able to access the camera device. This allows the app to take pictures and record videos using the camera.",
+      "protection_level": "dangerous",
+      "since_version": "1",
+      "type": "permission"
+    },
+    {
+      "name": "RECORD_AUDIO",
+      "full_name": "android.permission.RECORD_AUDIO",
+      "description": "Allows an application to record audio. This enables the app to capture sound through the device's microphone.",
+      "protection_level": "dangerous",
+      "since_version": "1",
+      "type": "permission"
+    },
+    {
+      "name": "READ_CONTACTS",
+      "full_name": "android.permission.READ_CONTACTS",
+      "description": "Allows an application to read the user's contacts data. This provides access to the list of accounts on the device, and contact names, phone numbers, email addresses, etc.",
+      "protection_level": "dangerous",
+      "since_version": "1",
+      "type": "permission"
+    },
+    {
+      "name": "WRITE_CONTACTS",
+      "full_name": "android.permission.WRITE_CONTACTS",
+      "description": "Allows an application to write the user's contacts data. This enables creating, modifying, or deleting contact information.",
+      "protection_level": "dangerous",
+      "since_version": "1",
+      "type": "permission"
+    },
+    {
+      "name": "READ_CALENDAR",
+      "full_name": "android.permission.READ_CALENDAR",
+      "description": "Allows an application to read the user's calendar data. This provides access to events, reminders, attendees, etc.",
+      "protection_level": "dangerous",
+      "since_version": "1",
+      "type": "permission"
+    },
+    {
+      "name": "WRITE_CALENDAR",
+      "full_name": "android.permission.WRITE_CALENDAR",
+      "description": "Allows an application to write the user's calendar data. This enables creating, modifying, or deleting calendar events.",
+      "protection_level": "dangerous",
+      "since_version": "1",
+      "type": "permission"
+    },
+    {
+      "name": "READ_CALL_LOG",
+      "full_name": "android.permission.READ_CALL_LOG",
+      "description": "Allows an application to read the user's call log. This provides access to information about calls made and received.",
+      "protection_level": "dangerous",
+      "since_version": "16",
+      "type": "permission"
+    },
+    {
+      "name": "READ_PHONE_STATE",
+      "full_name": "android.permission.READ_PHONE_STATE",
+      "description": "Allows read only access to phone state, including the phone number of the device, current cellular network information, the status of any ongoing calls, and a list of any PhoneAccounts registered on the device.",
+      "protection_level": "dangerous",
+      "since_version": "1",
+      "type": "permission"
+    },
+    {
+      "name": "READ_PHONE_NUMBERS",
+      "full_name": "android.permission.READ_PHONE_NUMBERS",
+      "description": "Allows read access to the device's phone number(s). This is a subset of the capabilities granted by READ_PHONE_STATE but on Android 8.0 (API level 26) and higher, it's a separate permission.",
+      "protection_level": "dangerous",
+      "since_version": "26",
+      "type": "permission"
+    },
+    {
+      "name": "READ_SMS",
+      "full_name": "android.permission.READ_SMS",
+      "description": "Allows an application to read SMS messages. This enables the app to read all SMS messages stored on the device.",
+      "protection_level": "dangerous",
+      "since_version": "1",
+      "type": "permission"
+    },
+    {
+      "name": "READ_EXTERNAL_STORAGE",
+      "full_name": "android.permission.READ_EXTERNAL_STORAGE",
+      "description": "Allows an application to read from external storage. This provides access to files stored by the user or other applications.",
+      "protection_level": "dangerous",
+      "since_version": "16",
+      "type": "permission"
+    },
+    {
+      "name": "WRITE_EXTERNAL_STORAGE",
+      "full_name": "android.permission.WRITE_EXTERNAL_STORAGE",
+      "description": "Allows an application to write to external storage. This enables the app to create, modify, or delete files in shared storage.",
+      "protection_level": "dangerous",
+      "since_version": "1",
+      "type": "permission"
+    },
+    {
+      "name": "READ_MEDIA_IMAGES",
+      "full_name": "android.permission.READ_MEDIA_IMAGES",
+      "description": "Allows an application to read image files from external storage. Introduced in Android 13 as a more granular replacement for READ_EXTERNAL_STORAGE.",
+      "protection_level": "dangerous",
+      "since_version": "33",
+      "type": "permission"
+    },
+    {
+      "name": "READ_MEDIA_VIDEO",
+      "full_name": "android.permission.READ_MEDIA_VIDEO",
+      "description": "Allows an application to read video files from external storage. Introduced in Android 13 as a more granular replacement for READ_EXTERNAL_STORAGE.",
+      "protection_level": "dangerous",
+      "since_version": "33",
+      "type": "permission"
+    },
+    {
+      "name": "READ_MEDIA_AUDIO",
+      "full_name": "android.permission.READ_MEDIA_AUDIO",
+      "description": "Allows an application to read audio files from external storage. Introduced in Android 13 as a more granular replacement for READ_EXTERNAL_STORAGE.",
+      "protection_level": "dangerous",
+      "since_version": "33",
+      "type": "permission"
+    },
+    {
+      "name": "ACTIVITY_RECOGNITION",
+      "full_name": "android.permission.ACTIVITY_RECOGNITION",
+      "description": "Allows an application to recognize physical activity. This permission allows the app to detect user activities such as walking, biking, driving, etc.",
+      "protection_level": "dangerous",
+      "since_version": "29",
+      "type": "permission"
+    },
+    {
+      "name": "BODY_SENSORS",
+      "full_name": "android.permission.BODY_SENSORS",
+      "description": "Allows an application to access data from sensors that monitor the user's physical condition, such as heart rate.",
+      "protection_level": "dangerous",
+      "since_version": "20",
+      "type": "permission"
+    }
+  ]
+}

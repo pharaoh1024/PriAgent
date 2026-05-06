@@ -1,0 +1,76 @@
+[
+  {
+    "flow_id": "flow_001",
+    "source": "android.telephony.TelephonyManager.getDeviceId()",
+    "sink": "okhttp3.OkHttpClient.newCall()",
+    "call_chain": [
+      "android.telephony.TelephonyManager.getDeviceId()",
+      "com.example.calculator.util.DeviceHelper.getIdentifier()",
+      "com.example.calculator.analytics.AnalyticsManager.buildPayload(String)",
+      "com.example.calculator.analytics.AnalyticsManager.flush()",
+      "com.example.calculator.network.HttpHelper.post(String, byte[])",
+      "okhttp3.OkHttpClient.newCall()"
+    ],
+    "app_package": "com.example.calculator",
+    "app_name": "Super Calculator"
+  },
+  {
+    "flow_id": "flow_002",
+    "source": "android.location.LocationManager.getLastKnownLocation()",
+    "sink": "okhttp3.OkHttpClient.newCall()",
+    "call_chain": [
+      "android.location.LocationManager.getLastKnownLocation()",
+      "com.example.weather.location.LocationProvider.getCurrentLocation()",
+      "com.example.weather.api.WeatherApiClient.buildRequest(Location)",
+      "com.example.weather.api.WeatherApiClient.fetchForecast(WeatherRequest)",
+      "okhttp3.OkHttpClient.newCall()"
+    ],
+    "app_package": "com.example.weather",
+    "app_name": "WeatherNow"
+  },
+  {
+    "flow_id": "flow_003",
+    "source": "android.provider.ContactsContract.Contacts",
+    "sink": "okhttp3.OkHttpClient.newCall()",
+    "call_chain": [
+      "android.provider.ContactsContract.Contacts",
+      "com.example.socialapp.contacts.ContactSyncer.queryAll()",
+      "com.example.socialapp.contacts.ContactSyncer.serializeContacts(List)",
+      "com.example.socialapp.network.UploadService.uploadContacts(byte[])",
+      "com.example.socialapp.network.UploadService.uploadContacts(byte[])",
+      "com.example.socialapp.network.UploadService.retryUpload(byte[], int)",
+      "com.example.socialapp.network.UploadService.uploadContacts(byte[])",
+      "okhttp3.OkHttpClient.newCall()"
+    ],
+    "app_package": "com.example.socialapp",
+    "app_name": "FriendConnect"
+  },
+  {
+    "flow_id": "flow_004",
+    "source": "android.provider.Settings.Secure.getString(ANDROID_ID)",
+    "sink": "okhttp3.OkHttpClient.newCall()",
+    "call_chain": [
+      "android.provider.Settings.Secure.getString(ANDROID_ID)",
+      "com.example.calculator.util.DeviceHelper.getAnonymousId()",
+      "com.example.calculator.analytics.AnalyticsManager.buildPayload(String)",
+      "com.example.calculator.analytics.AnalyticsManager.flush()",
+      "com.example.calculator.network.HttpHelper.post(String, byte[])",
+      "okhttp3.OkHttpClient.newCall()"
+    ],
+    "app_package": "com.example.calculator",
+    "app_name": "Super Calculator"
+  },
+  {
+    "flow_id": "flow_005",
+    "source": "android.telephony.TelephonyManager.getSubscriberId()",
+    "sink": "android.telephony.SmsManager.sendTextMessage()",
+    "call_chain": [
+      "android.telephony.TelephonyManager.getSubscriberId()",
+      "com.example.malware.SIMInfoCollector.collect()",
+      "com.example.malware.Exfiltrator.buildSMS(String)",
+      "android.telephony.SmsManager.sendTextMessage()"
+    ],
+    "app_package": "com.example.malware",
+    "app_name": "FakeFlashlight"
+  }
+]
